@@ -1,0 +1,2 @@
+Portfolio project is a space exploration text adventure game that takes user input to make decisions.
+There are 20 different locations in this game and the way you can win is to find the old wizard in another solar system that will give you magical powers.

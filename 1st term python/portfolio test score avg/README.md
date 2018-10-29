@@ -1,0 +1,1 @@
+The test score and average program is a program designed to take user input on 10 test scores and find the average of the score and give them the grade they would have.
