@@ -1,0 +1,9 @@
+title of the quiz (must be the first line)
+category - line 2
+qeustion (must only be on one line ( anywhre you need a new line in the text enter a "/" ) - line 3
+answer option 1 - line 4
+answer option 2 - line 5
+answer option 3 - line 6
+answer option 4 - line 7
+correct answer to question (make sure it matches how the user will respond) - line 8
+explanation

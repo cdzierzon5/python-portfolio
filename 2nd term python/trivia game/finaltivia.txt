@@ -1,0 +1,81 @@
+Trivia Game
+Running a cell in Jupyter Notebooks
+1. What is not a way to run a cell?
+A) Menu: Cell... > Run Cells
+B)Ctrl + Enter
+C)Shift + Enter
+D)Shift + R
+D
+Shift + R is the only way you can't run a cell//
+A valid code comment in Python
+2. What is the a valid code commment
+A) (comment) warnings can be placed in comments
+B) comments make code easier to update
+C) # use comments to describe the function of code
+D) [comment] comments can provide usfull intructions for other developers
+C
+The # symbol is what you use in front of a comment to comment properly//
+Replacing a list item
+3. Which code replaces the "0" with a "6" in the the following list? / numbers = [1, 1, 0,]
+A) numbers.append(5)
+B) numbers[3] = 5
+C) numbers[2] = 5
+D) numbers.insert(2,3)
+C
+You can replace list items by using the index of what item you want to replace//
+Printing statements
+4. What would this print? /student_name = "Jacob" /print(student_name, "will be at the store")
+A) Jacob will be at the store
+B) Jacob, will be at the store
+C) student_name will be at the store
+D) student_name, will be at the store
+A
+The only things that are printed, is what is in the quotations// 
+Conditionals
+5. What does the .isalnum() check for?
+A) It checks for alphabetical characters
+B) It checks for numbers
+C) It checks for symbols
+D) It checks for numbers and alphabetical characters
+D
+.isalnum() checks for numbers and alphabetical characters//
+Conditionals
+6. What does .islower() check for?
+A) It checks if all of the characters are lower case
+B) It checks if the first letter is lower case
+C) It checks for a digit
+D) It checks for what it starts with
+A
+.islower() checks if all of the characters are lower case//
+Operators
+7. What would print 8
+A) print(5-3)
+B) print("5+3")
+C) print(5*3)
+D) print(5+3)
+D
+Equations are left out of quotations//
+Slicing srtings
+8. What would this print? /student_name = "Jacob" / print(student_name[1:4])
+A) Jaco
+B) acob
+C) boca
+D) ocaJ
+B
+The index position of the first character is 0//
+Slicing strings
+9. What would this print? /long_word = "timeline" / print(long_word[3::-1])
+A) emit
+B) ime
+C) time
+D) line
+A
+Using -1 will print the text backwards//
+finding the length of the string
+10. What is the length of the sring? /work_tip = "save your code" /print(len(work_tip))
+A) 12
+B) 13
+C) 14
+D) 15
+C
+Spaces are counted as positions//
