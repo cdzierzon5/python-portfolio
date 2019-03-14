@@ -32,6 +32,16 @@ class Player(object):
         self.score = 0
         self.name = name
 
+    def sayHi(self):
+        print("Hi, my name is " + self.name)
+
+    def take_turn(self):
+        turn = Turn(self)
+        while turn.active == True:
+            turn.roll()
+
+        self.score += turn.score
+
 
 class Score(object):
 
@@ -107,12 +117,14 @@ class Score(object):
 
 class Turn(object):
 
-    def __init__(self):
+    def __init__(self, player):
         self.dice = [Die(), Die(), Die(), Die(), Die(), Die()]
         self.selected_dice = []
         self.score = 0
+        self.roll_score = 0
         self.roll_number = 0
         self.active = True
+        self.player = player
 
     def roll(self):
         for i in range(0, len(self.dice)):
@@ -122,7 +134,9 @@ class Turn(object):
 
     def display_values(self):
         print("")
-        print("Score: " + str(self.score))
+        print("Player: " + self.player.name)
+        print("Total Score: " + str(self.player.score))
+        print("Roll Score: " + str(self.score + self.roll_score))
         print("rolled dice:")
         for i in range(0, len(self.dice)):
             die = self.dice[i]
@@ -135,21 +149,43 @@ class Turn(object):
             message = str(i + 1) + ": " + die.display_value()
             print(message)
 
+        print("")
+        answer = raw_input("enter die number, r to roll, t to take the points, or p to pass: ").lower()
+        if answer == "p":
+            self.active = False
+            self.score = 0
+
+        elif answer == "t":
+            self.score += self.roll_score
+            self.active = False
+
+        elif answer == "r":
+            self.score += self.roll_score
+            self.take()
+            self.roll()
+
+        elif answer == "1" or answer == "2" or answer == "3" or answer == "4" or answer == "5" or answer == "6":
+            index = int(answer)
+            self.select(index)
+
+
     def score_roll(self):
-        score = Score(self.dice)
-        self.score = score.value
-        if score.farkle: self.active = False
+        roll_score = Score(self.dice)
+        self.roll_score = roll_score.value
+        if roll_score.farkle: self.active = False
+
 
     def take(self):
+        selected = []
         for die in self.dice:
             if die.selected:
                 die.deselect()
+                selected.append(die)
                 self.selected_dice.append(die)
 
-        for die in self.selected_dice:
+        for die in selected:
             self.dice.remove(die)
 
-        return self.score
 
     def select(self, num):
         self.dice[num - 1].selected = True
@@ -162,22 +198,43 @@ class Turn(object):
         self.display_values()
 
 
+class Game(object):
+
+    def __init__(self):
+        self.players = []
+        self.high_scorer = Player("")
+        self.is_winning_round = False
+
+    def play(self):
+        num_players = input("How many players would you like to have? ")
+        for i in range(0, num_players):
+            name = raw_input("enter name for player " + str(i+1) + ": ")
+            player = Player(name)
+            self.players.append(player)
+
+        while self.is_winning_round == False:
+            for player in self.players:
+                player.take_turn()
+                if player.score >= 1500:
+                    self.is_winning_round = True
+                if player.score > self.high_scorer.score:
+                    self.high_scorer = player
+
+        print(self.high_scorer.name + " wins! ")
+        print(str(self.high_scorer.score) + " points")
+
+
+
 def main():
-    turn = Turn()
-    turn.roll()
-    turn.select(2)
-    turn.select(3)
-    turn.take()
-    turn.display_values()
-    turn.roll()
+    print("rules")
+    play = raw_input("would you like to play? (y/n) ").lower()
+    while play == "y":
+        game = Game()
+        game.play()
+        play = raw_input("would you like to play again? (y/n) ").lower()
+
+    print("Thanks for your support :)")
+
 
 
 main()
-
-# die1 = Die(1)
-# print die1.value
-# die1.roll()
-# print
-
-
-#
